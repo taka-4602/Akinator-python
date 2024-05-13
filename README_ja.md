@@ -1,5 +1,5 @@
 # Akinator-python
-AkinatorAPI ラッパー
+AkinatorAPI ラッパー！
 ### >>```pip install akinator-python```<<
 ## 使い方
 モジュールをインストールしてexample_jaを実行します  
