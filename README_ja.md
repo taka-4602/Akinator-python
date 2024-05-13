@@ -1,6 +1,9 @@
 # Akinator-python
 AkinatorAPI ラッパー！
 ### >>```pip install akinator-python```<<
+## 必要なモジュール
+- requests
+- bs4
 ## 使い方
 モジュールをインストールしてexample_jaを実行します  
 #### example_ja.py
