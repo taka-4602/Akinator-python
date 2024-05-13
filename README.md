@@ -1,4 +1,4 @@
-# Akinator-py
+# Akinator-python
 A API wrapper for the AkinatorAPI
 ### >>```pip install akinator-python```<<
 ## Usage
