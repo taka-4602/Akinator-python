@@ -43,7 +43,7 @@ You can just run and enjoy it in terminal :)
   default is ```False```
 
 ```Akinator.start_game()```  
-- Start the Akinator game
+- Start the Akinator game  
   it will return a first question in str
   
 ```Akinator.post_answer()```  
