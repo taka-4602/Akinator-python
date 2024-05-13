@@ -2,6 +2,9 @@
 A API wrapper for the AkinatorAPI
 ### >>```pip install akinator-python```<<  
 ### 日本語は -> [README_ja](https://github.com/taka-4602/Akinator-python/blob/main/README_ja.md)
+## Requirement
+- requests
+- bs4
 ## Usage
 Install this module, download example.py and run  
 #### example.py
