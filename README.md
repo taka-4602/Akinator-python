@@ -41,6 +41,10 @@ You can just run and enjoy it in terminal :)
   If nothing is specified, ```theme=characters``` characters will be selected
 - ```child_mode=bool```  
   default is ```False```
+
+```Akinator.start_game()```  
+- Start the Akinator game
+  it will return a first question in str
   
 ```Akinator.post_answer()```  
 - ```answer=str```  
