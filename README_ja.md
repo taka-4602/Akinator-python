@@ -40,6 +40,10 @@ Akinator-pythonを使う必要最低限のコードです
   テーマはデフォルトで ```theme=characters``` キャラクターが選ばれます
 - ```child_mode=bool```  
   デフォルトは ```False```
+
+```Akinator.start_game()```  
+- アキネーターをスタートします  
+  ゲームが始まると最初の質問がstrで返ってきます
   
 ```Akinator.post_answer()```  
 - ```answer=str```  
