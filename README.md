@@ -12,22 +12,27 @@ Install this module, download example.py and run
 from akinator_python import Akinator
 
 akinator=Akinator(lang="en")
-print(akinator.start_game())
+akinator.start_game()
 while True:
-    ans=input("answer：")
-    if ans=="b":
-        print(akinator.go_back()['question'])
-    else:
-        response=akinator.post_answer(ans)
-        if "id_proposition" in response:
-            print(f"{response['name_proposition']} / {response['description_proposition']}")
-            ans=input("is it correct?：")
-            if ans=="n":
-                print(akinator.exclude()['question'])
-            elif ans=="y":
-                break
+    try:
+        print(akinator.question)
+        ans=input("answer：")
+        if ans=="b":
+            akinator.go_back()
         else:
-            print(response['question'])
+            akinator.post_answer(ans)
+            if akinator.answer_id:
+                print(f"{akinator.name} / {akinator.description}")
+                ans=input("is it correct?：")
+                if ans=="n":
+                    akinator.exclude()
+                elif ans=="y":
+                    break
+                else:
+                    break
+    except Exception as e:
+        print(e)
+        continue
 ```
 I have prepared a super simple example code  
 You can just run and enjoy it in terminal :)  
