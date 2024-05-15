@@ -10,6 +10,7 @@ class Akinator():
         self.description=None
         self.photo=None
         self.answer_id=None
+        self.akitude=None
         if theme=="characters":
             sid=1
         elif theme=="objects":
@@ -31,6 +32,7 @@ class Akinator():
         self.description=None
         self.photo=None
         self.answer_id=None
+        self.akitude="https://en.akinator.com/assets/img/akitudes_670x1096/defi.png"
         game=requests.post(f"{self.ENDPOINT}game",json={"sid":self.json["sid"],"cm":self.json["cm"]}).text
         soup = BeautifulSoup(game,"html.parser")
         askSoundlike=soup.find(id="askSoundlike")
@@ -62,6 +64,8 @@ class Akinator():
             progression=progression.json()
             if progression["completion"]=="KO":
                 raise AkinatorError("completion : KO")
+            elif progression["completion"]=="SOUNDLIKE":
+                raise AkinatorError("completion : SOUNDLIKE")
             try:
                 self.json["step"]=int(progression["step"])
                 self.json["progression"]=float(progression["progression"])
@@ -69,14 +73,16 @@ class Akinator():
                 self.progression=float(progression["progression"])
                 self.question=progression["question"]
                 self.question_id=progression["question_id"]
+                self.akitude=f"https://en.akinator.com/assets/img/akitudes_670x1096/{progression['akitude']}"
             except:
                 self.name=progression["name_proposition"]
                 self.description=progression["description_proposition"]
                 self.photo=progression["photo"]
                 self.answer_id=progression["id_proposition"]
+                self.json["step_last_proposition"]=int(self.json["step"])
             return progression
-        except:
-            raise AkinatorError(progression.text)
+        except Exception as e:
+            raise AkinatorError(progression)
 
     def go_back(self):
         self.name=None
@@ -96,9 +102,10 @@ class Akinator():
             self.progression=float(goback["progression"])
             self.question=goback["question"]
             self.question_id=goback["question_id"]
+            self.akitude=f"https://en.akinator.com/assets/img/akitudes_670x1096/{goback['akitude']}"
             return goback
         except:
-            raise AkinatorError(goback.text)
+            raise AkinatorError(goback)
 
     def exclude(self):
         self.name=None
@@ -110,12 +117,13 @@ class Akinator():
         try:
             exclude=requests.post(f"{self.ENDPOINT}exclude",json=self.json)
             exclude=exclude.json()
-            self.json["step"]=int(self.json["step"])
-            self.json["progression"]=float(self.json["progression"])
+            self.json["step"]=int(exclude["step"])
+            self.json["progression"]=float(exclude["progression"])
             self.step=int(exclude["step"])
             self.progression=float(exclude["progression"])
             self.question=exclude["question"]
             self.question_id=exclude["question_id"]
+            self.akitude=f"https://en.akinator.com/assets/img/akitudes_670x1096/{exclude['akitude']}"
             return exclude
         except:
-            raise AkinatorError(exclude.text)
+            raise AkinatorError(exclude)
