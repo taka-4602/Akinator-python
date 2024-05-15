@@ -18,7 +18,6 @@ class Akinator():
             sid=14
         else:
             raise AkinatorError("the theme must be 'characters' / 'objects' / 'animals'")
-        self.session=requests.session()
         self.json={
             "step":0,
             "progression":0.0,
@@ -28,7 +27,11 @@ class Akinator():
         }
 
     def start_game(self):
-        game=self.session.post(f"{self.ENDPOINT}game",json={"sid":self.json["sid"],"cm":self.json["cm"]}).text
+        self.name=None
+        self.description=None
+        self.photo=None
+        self.answer_id=None
+        game=requests.post(f"{self.ENDPOINT}game",json={"sid":self.json["sid"],"cm":self.json["cm"]}).text
         soup = BeautifulSoup(game,"html.parser")
         askSoundlike=soup.find(id="askSoundlike")
         question_label=soup.find(id="question-label").get_text()
@@ -55,7 +58,7 @@ class Akinator():
         else:
             raise AkinatorError("the answer must be 'y' / 'n' / 'idk' / 'p' / 'pn'")
         try:
-            progression=self.session.post(f"{self.ENDPOINT}answer",json=self.json)
+            progression=requests.post(f"{self.ENDPOINT}answer",json=self.json)
             progression=progression.json()
             if progression["completion"]=="KO":
                 raise AkinatorError("completion : KO")
@@ -69,7 +72,7 @@ class Akinator():
             except:
                 self.name=progression["name_proposition"]
                 self.description=progression["description_proposition"]
-                self.photo=["photo"]
+                self.photo=progression["photo"]
                 self.answer_id=progression["id_proposition"]
             return progression
         except:
@@ -85,7 +88,7 @@ class Akinator():
         if "answer" in self.json:
             del self.json["answer"]
         try:
-            goback=self.session.post(f"{self.ENDPOINT}cancel_answer",json=self.json)
+            goback=requests.post(f"{self.ENDPOINT}cancel_answer",json=self.json)
             goback=goback.json()
             self.json["step"]=int(goback["step"])
             self.json["progression"]=float(goback["progression"])
@@ -105,7 +108,7 @@ class Akinator():
         if "answer" in self.json:
             del self.json["answer"]
         try:
-            exclude=self.session.post(f"{self.ENDPOINT}exclude",json=self.json)
+            exclude=requests.post(f"{self.ENDPOINT}exclude",json=self.json)
             exclude=exclude.json()
             self.json["step"]=int(self.json["step"])
             self.json["progression"]=float(self.json["progression"])
