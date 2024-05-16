@@ -69,7 +69,7 @@ Akinator-pythonを使う必要最低限のコードです
 ```Akinator.question```  
 - 常に ```str```, ふつうに質問
 
-## When Akinator makes a guess
+## アキネーターが答えを出した時
 ```Akinator.name```  
 - デフォルトは ```None``` アキネーターがなにか答えを出したら ```str``` でキャラクターの名前
 
