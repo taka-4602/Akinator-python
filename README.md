@@ -80,7 +80,7 @@ You can just run and enjoy it in terminal :)
 ```Akinator.description```  
 - Same as ```.name```, photo URL in ```str``` Character photo guessed by Akinator
 # Supplement
-```.post_ansewer()``` ```.go_back()``` ```.exclude()``` are ruturn a dict  
+```.post_ansewer()``` ```.go_back()``` ```.exclude()``` are return a dict  
 #### Question in progress
 ```
 {'completion': 'OK', 'akitude': 'serein.png', 'step': '1', 'progression': '0.00000',
