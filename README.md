@@ -77,7 +77,7 @@ You can just run and enjoy it in terminal :)
 ```Akinator.description```  
 - Same as ```.name```, Character description guessed by Akinator
 
-```Akinator.description```  
+```Akinator.photo```  
 - Same as ```.name```, photo URL in ```str``` Character photo guessed by Akinator
 # Supplement
 ```.post_ansewer()``` ```.go_back()``` ```.exclude()``` are return a dict  
