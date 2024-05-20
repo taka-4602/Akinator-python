@@ -76,7 +76,7 @@ Akinator-pythonを使う必要最低限のコードです
 ```Akinator.description```  
 - ```.name``` と同じ仕様でキャラクターの説明
 
-```Akinator.description```  
+```Akinator.photo```  
 - ```.name``` と同じ仕様でキャラクターの写真のURL
 ## 補足
 ```.post_ansewer()``` ```.go_back()``` ```.exclude()``` はdictを返します  
