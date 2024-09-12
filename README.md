@@ -59,7 +59,7 @@ You can just run and enjoy it in terminal :)
 - Yes, you can go back to the previous question
 
 ```Akinator.exclude()```  
-- If Akinator's answer is incorrect, you can restart the question
+- If Akinator's answer is incorrect, you can continue the question
 
 ```Akinator.step```  
 - Always ```int```, you can check the number of questions
