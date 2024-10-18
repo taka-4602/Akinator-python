@@ -1,6 +1,10 @@
 # Akinator-python
 An API wrapper for the AkinatorAPI
-### >>```pip install akinator-python```<<  
+## installation
+```py
+pip install akinator-python
+```
+requirement：requests, bs4
 ### 日本語は -> [README_ja](https://github.com/taka-4602/Akinator-python/blob/main/README_ja.md)
 ## Requirement
 - requests
