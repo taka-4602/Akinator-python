@@ -1,6 +1,10 @@
 # Akinator-python
 AkinatorAPI ラッパー！
-### >>```pip install akinator-python```<<
+## インストール
+```py
+pip install akinator-python
+```
+必須：requests, bs4
 ## 必要なモジュール
 - requests
 - bs4
